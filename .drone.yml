@@ -1,10 +1,10 @@
 kind: pipeline
 type: docker
-name: maven
+name: default
 steps:
-- name: test
-  image: ramalingam81/maven-apt:latest
+- name: maven-docker
+  image: maven
   commands:
   - mvn -v
-  - mvn clean build
+  - mvn -Pdist clean package docker:build 
 
