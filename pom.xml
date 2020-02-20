@@ -41,21 +41,23 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-                        <plugin>
-                            <groupId>com.spotify</groupId>
-                            <artifactId>dockerfile-maven-plugin</artifactId>
-                            <version>1.4.0</version>
-                            <executions>
-                                <execution>
-                                    <id>default</id>
-                                    <phase>install</phase>
-                                    <goals>
-                                        <goal>build</goal>
-                                        <goal>push</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
+			
+			<plugin>
+  			  <groupId>io.openliberty.boost</groupId>
+  			  <artifactId>boost-maven-plugin</artifactId>
+  			  <version>0.1</version>
+  			  <configuration>
+				  <repository>ramalingam81/maven</repository>
+  			  </configuration>
+  			  <executions>
+    			    <execution>
+      			      <goals>
+        			<goal>docker-build</goal>
+        			<goal>docker-push</goal>
+      			      </goals>
+    			    </execution>
+  			  </executions>
+		        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
