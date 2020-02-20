@@ -6,5 +6,6 @@ steps:
   image: thomasf/drone-mvn
   commands:
   - mvn -v
+  - mvn -v
   - mvn install
 
