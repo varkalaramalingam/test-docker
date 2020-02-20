@@ -3,7 +3,7 @@ type: docker
 name: maven
 steps:
 - name: test
-  image: ramalingam81/centos6-java8
+  image: ramalingam81/maven-apt:latest
   commands:
   - ls
   - mvn -v
