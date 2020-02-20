@@ -41,7 +41,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
 			<plugin>
   			  <groupId>io.openliberty.boost</groupId>
   			  <artifactId>boost-maven-plugin</artifactId>
