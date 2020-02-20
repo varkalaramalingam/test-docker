@@ -3,9 +3,8 @@ type: docker
 name: maven
 steps:
 - name: test
-  image: ramalingam81/maven-apt
+  image: ramalingam81/maven-apt:latest
   commands:
   - mvn -v
   - mvn install
-  - mvn docker:build
 
