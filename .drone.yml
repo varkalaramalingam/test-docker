@@ -5,7 +5,8 @@ steps:
 - name: maven-docker
   image: thomasf/drone-mvn
   commands:
-  - mvn -v
+  - pwd
+  - ls
   - mvn -v
   - mvn install
 
