@@ -6,5 +6,5 @@ steps:
   image: maven
   commands:
   - mvn -v
-  - mvn -Pdist clean package docker:build 
+  - mvn install
 
