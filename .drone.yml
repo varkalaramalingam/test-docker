@@ -3,7 +3,7 @@ type: docker
 name: default
 steps:
 - name: maven-docker
-  image: thomasf/drone-mvn
+  image: openjdk
   commands:
   - pwd
   - ls
