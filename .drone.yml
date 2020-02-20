@@ -3,7 +3,7 @@ type: docker
 name: default
 steps:
 - name: maven-docker
-  image: robertstettner/drone-mvn-auth
+  image: thomasf/drone-mvn
   commands:
   - mvn -v
   - mvn install
