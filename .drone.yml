@@ -1,12 +1,9 @@
 kind: pipeline
 type: docker
-name: default
+name: maven
 steps:
-- name: maven-docker
-  image: openjdk
+- name: test
+  image: ramalingam81/maven-apt:latest
   commands:
-  - pwd
-  - ls
   - mvn -v
   - mvn install
-
