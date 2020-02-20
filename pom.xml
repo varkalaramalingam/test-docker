@@ -46,8 +46,11 @@
                             <artifactId>dockerfile-maven-plugin</artifactId>
                             <version>1.4.0</version>
                             <configuration>
-				<repository>ramalingam81/maven</repository>
+				<repository>633025986259.dkr.ecr.us-east-1.amazonaws.com/maven</repository>
 				<tag>latest</tag>
+				<credHelper>ecr-login</credHelper>
+				<serverId>ecs-docker</serverId>
+                                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 			    </configuration>
 			    <executions>
 			       	<execution>
