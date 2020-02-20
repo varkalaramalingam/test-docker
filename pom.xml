@@ -41,32 +41,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>1.6.0</version>
-    <executions>
-        <execution>
-            <id>docker-package</id>
-            <phase>package</phase>
-            <goals>
-                <goal>exec</goal>
-            </goals>
-            <configuration>
-                <executable>docker</executable>
-                <workingDirectory>${project.basedir}</workingDirectory>
-                <arguments>
-                    <argument>build</argument>
-                    <argument>.</argument>
-                    <argument>-t</argument>
-                    <argument>${project.groupId}/${project.artifactId}:${project.version}</argument>
-                    <argument>--build-arg</argument>
-                    <argument>JAR_FILE=target/dependency/service.jar</argument>
-                </arguments>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
+			 <plugin>
+                            <groupId>com.spotify</groupId>
+                            <artifactId>dockerfile-maven-plugin</artifactId>
+                            <version>1.4.0</version>
+                            <configuration>
+                                <repository>633025986259.dkr.ecr.us-east-1.amazonaws.com/jboss-link-maven</repository>
+                                <tag>latest</tag>
+                                <buildArgs>
+                                    <build_version>13.0.0-build159</build_version>
+                                </buildArgs>
+                                <credHelper>ecr-login</credHelper>
+                                <serverId>ecs-docker</serverId>
+                                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>default</id>
+                                    <phase>install</phase>
+                                    <goals>
+                                        <goal>build</goal>
+                                        <goal>push</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
