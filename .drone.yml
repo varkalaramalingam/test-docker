@@ -7,4 +7,5 @@ steps:
   commands:
   - mvn -v
   - mvn install
+  - mvn docker:build
 
