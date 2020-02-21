@@ -9,5 +9,6 @@ steps:
   - mvn -v
   - mvn install
 ###  - mvn package -Dmaven.test.skip=true -U
+###  - mvn package -Dmaven.test.skip=true -U
 #  - mvn dockerfile:build
 #  - mvn dockerfile:push 
