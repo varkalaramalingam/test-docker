@@ -8,6 +8,20 @@ steps:
   - ls
   - mvn -v
   - mvn install
-###  - mvn package -Dmaven.test.skip=true -U
-#  - mvn dockerfile:build
-#  - mvn dockerfile:push 
+
+# to push docker image into ecrrepo
+- name: publish
+  image: plugins/ecr
+  settings:
+    access_key:
+      from_secret: aws_access_key_id
+    secret_key:
+      from_secret: aws_secret_access_key
+    region: us-east-1
+    tags:
+      - latest
+      - ${DRONE_BUILD_NUMBER}
+    repo: 633025986259.dkr.ecr.us-east-1.amazonaws.com/maven
+    registry: 633025986259.dkr.ecr.us-east-1.amazonaws.com
+  when:
+    event: push
