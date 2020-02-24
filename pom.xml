@@ -41,36 +41,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-                        <plugin>
-                            <groupId>com.spotify</groupId>
-                            <artifactId>dockerfile-maven-plugin</artifactId>
-                            <version>1.4.0</version>
-                            <configuration>
-                                <repository>633025986259.dkr.ecr.us-east-1.amazonaws.com/maven</repository>
-                                <tag>latest</tag>
-                                <credHelper>ecr-login</credHelper>
-                                <serverId>ecs-docker</serverId>
-                                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
-                            </configuration>
-                            <dependencies>
-                              <!-- To make this work on JDK 9+ -->
-                              <dependency>
-                                <groupId>javax.activation</groupId>
-                                <artifactId>javax.activation-api</artifactId>
-                                <version>1.2.0</version>
-                              </dependency>
-                            </dependencies>
-                            <executions>
-                                <execution>
-                                    <id>default</id>
-                                    <phase>install</phase>
-                                    <goals>
-                                        <goal>build</goal>
-                                        <goal>push</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
