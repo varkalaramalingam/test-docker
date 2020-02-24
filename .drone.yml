@@ -35,14 +35,6 @@ steps:
   - ls
   - mvn -v
   - mvn install
-    
-
-- name: test6
-  image: ramalingam81/maven-apt:latest
-  commands:
-  - ls
-  - mvn -v
-  - mvn install
 # to push docker image into ecrrepo
 - name: publish
   image: plugins/ecr
