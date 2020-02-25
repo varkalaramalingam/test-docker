@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: maven
+name: Drone-maven
 steps:
 - name: test
   image: ramalingam81/maven-apt:latest
@@ -8,14 +8,6 @@ steps:
   - ls
   - mvn -v
   - mvn install
-- name: Deploy to AWS eks
-  image: 633025986259.dkr.ecr.us-east-1.amazonaws.com/eks-kubectl-wr:latest
-  commands:
-    - aws eks --region us-east-1 update-kubeconfig --name eks-cluster
-  when:
-    event: push
-
-# to push docker image into ecrrepo
 - name: publish
   image: plugins/ecr
   settings:
@@ -29,5 +21,11 @@ steps:
       - ${DRONE_BUILD_NUMBER}
     repo: 633025986259.dkr.ecr.us-east-1.amazonaws.com/maven
     registry: 633025986259.dkr.ecr.us-east-1.amazonaws.com
+  when:
+    event: push
+- name: Deploy to AWS eks
+  image: 633025986259.dkr.ecr.us-east-1.amazonaws.com/eks-kubectl-wr:latest
+  commands:
+    - aws eks --region us-east-1 update-kubeconfig --name eks-cluster
   when:
     event: push
