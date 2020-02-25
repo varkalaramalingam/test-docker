@@ -8,44 +8,13 @@ steps:
   - ls
   - mvn -v
   - mvn install
+- name: Deploy to AWS eks
+  image: 633025986259.dkr.ecr.us-east-1.amazonaws.com/eks-kubectl-wr:latest
+  commands:
+    - aws eks --region us-east-1 update-kubeconfig --name eks-cluster
+  when:
+    event: push
 
-- name: test2
-  image: ramalingam81/maven-apt:latest
-  commands:
-  - ls
-  - mvn -v
-  - mvn install
-- name: test3
-  image: ramalingam81/maven-apt:latest
-  commands:
-  - ls
-  - mvn -v
-  - mvn install
-
-- name: test4
-  image: ramalingam81/maven-apt:latest
-  commands:
-  - ls
-  - mvn -v
-  - mvn install
-
-- name: test5
-  image: ramalingam81/maven-apt:latest
-  commands:
-  - ls
-  - mvn -v
-  - mvn install
-
-- name: test6
-  image: ramalingam81/maven-apt:latest
-  commands:
-  - ls
-  - mvn -v
-  - mvn install
-    
-# to push docker image into ecrrepo
-#
-# to push docker image into ecrrepo
 # to push docker image into ecrrepo
 - name: publish
   image: plugins/ecr
