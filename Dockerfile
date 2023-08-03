@@ -1,4 +1,5 @@
-FROM openjdk:8-jre-slim
+FROM ubuntu:18.04
+#FROM openjdk:8-jre-slim
 
 LABEL maintainer="Omniwyse.com"
 
